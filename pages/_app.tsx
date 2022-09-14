@@ -17,17 +17,12 @@ import styled from "@emotion/styled";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
-
+const RootStyle = styled("div")({
+  background: "rgb(235 235 235)"
+});
 const clientSideEmotionCache = createEmotionCache();
 
 const lightTheme = createTheme(lightThemeOptions);
-
-const RootStyle = styled("div")({
-  background: "rgb(249, 250, 251)",
-  height: "100vh",
-  display: "grid",
-  placeItems: "center",
-});
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

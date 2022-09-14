@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import Table from "../components/Table";
 
-const New: NextPage = () => {
+const View: NextPage = () => {
   return (
     <div className="h-screen">
       <ResponsiveAppBar />
@@ -40,11 +40,11 @@ const New: NextPage = () => {
             background: "#fff",
           }}
         >
-          <Table />
+          PDF Viewer
         </Card>
       </Container>
     </div>
   );
 };
 
-export default New;
+export default View;

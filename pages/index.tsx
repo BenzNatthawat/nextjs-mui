@@ -1,47 +1,49 @@
-import { Button, Typography, Container, Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Button, Typography, Container, Box, Card } from "@mui/material";
 import Link from "next/link";
 import type { NextPage } from "next";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
+import Table from "../components/Table";
 
 const Home: NextPage = () => {
-  const theme = useTheme();
-
   return (
-      <Container
-        maxWidth="lg"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          height: "100vh",
-        }}
-      >
-        <Typography
+    <div className="h-screen">
+      <ResponsiveAppBar />
+      <Container>
+        <Card
           sx={{
-            textAlign: "center",
-            marginTop: "-4rem",
-            fontSize: "5rem",
-            fontWeight: 700,
-            letterSpacing: "-0.5rem",
-            display: "inline-block",
-            whiteSpace: "nowrap",
-            [theme.breakpoints.down("sm")]: {
-              fontSize: "4rem",
-              letterSpacing: "-0.4rem",
-            },
+            minWidth: 300,
+            padding: 3,
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            background: "#fff",
           }}
-          gutterBottom
         >
-          Welcome Back
-        </Typography>
+          <Typography>Welcome Back</Typography>
 
-        <Link href="/login" passHref>
-          <Button size="large" variant="contained">
-            Log out
-          </Button>
-        </Link>
+          <Link href="/login" passHref>
+            <Button size="large" variant="contained">
+              Log out
+            </Button>
+          </Link>
+        </Card>
+
+        <Card
+          sx={{
+            minWidth: 300,
+            padding: 3,
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            background: "#fff",
+          }}
+        >
+          <Table />
+        </Card>
       </Container>
+    </div>
   );
 };
 

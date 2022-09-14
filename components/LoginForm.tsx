@@ -14,6 +14,7 @@ import { LoadingButton } from "@mui/lab";
 const { motion } = require("framer-motion");
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -27,33 +28,18 @@ const animate = {
 };
 
 const LoginForm: NextPage = () => {
-  const [formInput, setFormInput] = useReducer(
-    (state: any, newState: any): any => ({ ...state, ...newState }),
-    {
-      username: "",
-      password: "",
-    }
-  );
+  const router = useRouter();
+  const { register, handleSubmit, reset, formState } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const handleInput = (evt: any): void => {
-    const { target }: any = evt;
-    const name = target.name;
-    const newValue = target.value;
-    setFormInput({ [name]: newValue });
-  };
-  const router = useRouter();
 
-  const handleSubmit = (evt: any): void => {
-    evt.preventDefault();
-    setIsSubmitting(true);
-
-    const data = { formInput };
-    console.log(data);
+  const onSubmit = (data: any): void => {
+    alert("SUCCESS!! :-)\n\n" + JSON.stringify(data, null, 4));
     router.push("/");
   };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         component={motion.div}
         animate={{
@@ -67,27 +53,28 @@ const LoginForm: NextPage = () => {
             display: "flex",
             flexDirection: "column",
             gap: 3,
+            my: 2
           }}
           component={motion.div}
           initial={{ opacity: 0, y: 40 }}
           animate={animate}
         >
           <TextField
+            {...register("username")}
             fullWidth
             autoComplete="username"
             type="text"
             label="User Name"
             name="username"
-            onChange={handleInput}
           />
 
           <TextField
+            {...register("password")}
             fullWidth
             autoComplete="current-password"
             type={showPassword ? "text" : "password"}
             name="password"
             label="Password"
-            onChange={handleInput}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -105,22 +92,12 @@ const LoginForm: NextPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={animate}
         >
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ my: 2 }}
-          >
-            <FormControlLabel control={<Checkbox />} label="Remember me" />
-
-            <Link href="#">Forgot password?</Link>
-          </Stack>
-
           <LoadingButton
             fullWidth
             size="large"
             type="submit"
             variant="contained"
+            className="bg-blue-500"
             loading={isSubmitting}
           >
             {isSubmitting ? "loading..." : "Login"}

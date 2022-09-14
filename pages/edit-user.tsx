@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import Table from "../components/Table";
 
-const New: NextPage = () => {
+const EditUser: NextPage = () => {
   return (
     <div className="h-screen">
       <ResponsiveAppBar />
@@ -20,31 +20,12 @@ const New: NextPage = () => {
             background: "#fff",
           }}
         >
-          <Typography>Welcome Back</Typography>
+          <Typography>EditUser</Typography>
 
-          <Link href="/login" passHref>
-            <Button size="large" variant="contained">
-              Log out
-            </Button>
-          </Link>
-        </Card>
-
-        <Card
-          sx={{
-            minWidth: 300,
-            padding: 3,
-            margin: "auto",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            background: "#fff",
-          }}
-        >
-          <Table />
         </Card>
       </Container>
     </div>
   );
 };
 
-export default New;
+export default EditUser;
