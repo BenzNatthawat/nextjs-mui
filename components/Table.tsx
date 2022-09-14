@@ -124,7 +124,7 @@ export default function Table() {
                       if (column.id === "action")
                         return (
                           <TableCell key={column.id} align={column.align}>
-                            <Button variant="contained" onClick={() => router.push('/view')}>
+                            <Button variant="contained" onClick={() => router.push('/view')} className="bg-blue-500">
                               Contained
                             </Button>
                           </TableCell>

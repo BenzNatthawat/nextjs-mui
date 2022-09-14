@@ -11,6 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useRouter } from "next/router";
+import Logo from "./Logo";
 
 const settings = [
   { label: "Setting", path: "setting" },
@@ -42,7 +43,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static" className="mb-6">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Logo />
           <Typography
             variant="h6"
             noWrap

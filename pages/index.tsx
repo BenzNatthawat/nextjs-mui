@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import Table from "../components/Table";
+import SearchForm from "../components/SearchForm";
 
 const Home: NextPage = () => {
   return (
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
       <ResponsiveAppBar />
       <Container>
         <Card
+          className="mb-6"
           sx={{
             minWidth: 300,
             padding: 3,
@@ -20,13 +22,7 @@ const Home: NextPage = () => {
             background: "#fff",
           }}
         >
-          <Typography>Welcome Back</Typography>
-
-          <Link href="/login" passHref>
-            <Button size="large" variant="contained">
-              Log out
-            </Button>
-          </Link>
+          <SearchForm />
         </Card>
 
         <Card

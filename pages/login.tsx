@@ -34,7 +34,6 @@ const fadeInUp = {
 };
 
 const Login: NextPage = () => {
-  const theme = useTheme();
   return (
     <RootStyle>
       <Container maxWidth="sm">
@@ -50,7 +49,13 @@ const Login: NextPage = () => {
           }}
         >
           <HeadingStyle component={motion.div} {...fadeInUp}>
-            <Logo />
+            <Box
+              sx={{
+                display: "inline-block"
+              }}
+            >
+              <Logo width={300} />
+            </Box>
             <Typography sx={{ color: "text.secondary", mb: 2 }}>
               Login to your account
             </Typography>
